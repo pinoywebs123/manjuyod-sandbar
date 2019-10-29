@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -26,21 +27,11 @@ export class AppComponent {
       url: '/contact',
       icon: 'contact'
     }
-    ,
-    {
-      title: 'Sign-up',
-      url: '/signup',
-      icon: 'contact'
-    }
-    ,
-    {
-      title: 'Login',
-      url: '/login',
-      icon: 'contact'
-    }
+
   ];
 
   constructor(
+    private router: Router,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
@@ -52,6 +43,15 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.checkToken();
     });
+  }
+
+  checkToken(){
+    const token = JSON.parse(localStorage.getItem('token'));
+    if ( token == null ){
+      this.router.navigateByUrl('/login');
+
+    }
   }
 }

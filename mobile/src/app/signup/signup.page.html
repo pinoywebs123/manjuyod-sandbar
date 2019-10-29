@@ -1,9 +1,42 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Sign-up</ion-title>
+    <ion-buttons slot="end" (click)="login()">
+        <ion-icon name="undo" class="LogoutIcon"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card class="signupForm">
+      <ion-img src="assets/images/whale.png" class="center"></ion-img>
+    <ion-card-content>
+        <ion-item>
+            <ion-label position="floating">First Name</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Middle Name</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Username</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password"></ion-input>
+        </ion-item>
+          <ion-button expand="block" color="danger">Submit</ion-button>
+          
+    </ion-card-content>
+  </ion-card>
 </ion-content>
