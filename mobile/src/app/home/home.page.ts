@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { BookingService } from '../services/booking.service';
 import * as moment from 'moment';
 
 
@@ -17,6 +18,7 @@ export class HomePage {
   constructor(
     private router: Router,
     private authServ: AuthService,
+    private bookServ: BookingService
   ) {}
 
   ionViewWillEnter(){
@@ -39,10 +41,13 @@ export class HomePage {
     this.authServ.logout();
   }
 
-  clickSave(){
+  clickSave() {
     const date = moment(this.res_date).format('MMMM DD YYYY');
     const time = moment(this.res_time).format('h:mm a');
-    console.log(date + time);
+    if(date === '' || time === '' || this.res_persons === '') {
+      return alert('All fields are strickly required!');
+    }
+    this.bookServ.sendBooking(date, time, this.res_persons);
   }
 
 

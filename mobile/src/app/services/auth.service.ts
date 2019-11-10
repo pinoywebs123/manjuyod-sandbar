@@ -31,9 +31,14 @@ export class AuthService {
 
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('token');
     this.router.navigateByUrl('/login');
+  }
+
+  getToken() {
+     const token = JSON.parse(localStorage.getItem('token'));
+     return token;
   }
 }
 
