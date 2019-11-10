@@ -26,13 +26,17 @@
         <ion-card-content>
             <ion-item>
                 <ion-label>Select Date</ion-label>
-                <ion-datetime displayFormat="MMMM/DD/YYYY" ></ion-datetime>
+                <ion-datetime displayFormat="MMMM/DD/YYYY" [(ngModel)]="res_date"></ion-datetime>
               </ion-item>
               <ion-item>
                   <ion-label>Select Time</ion-label>
-                  <ion-datetime displayFormat="h:mm a"></ion-datetime>
+                  <ion-datetime displayFormat="h:mm a" [(ngModel)]="res_time"></ion-datetime>
               </ion-item>
-              <ion-button expand="block" class="submitBtn">Submit</ion-button>
+              <ion-item>
+                <ion-label position="fixed">No. of heads</ion-label>
+                <ion-input [(ngModel)]="res_persons"></ion-input>
+              </ion-item>
+              <ion-button expand="block" class="submitBtn" (click)="clickSave()">Submit</ion-button>
         </ion-card-content>
       </ion-card>
       

@@ -43,15 +43,9 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.checkToken();
+      
     });
   }
 
-  checkToken(){
-    const token = JSON.parse(localStorage.getItem('token'));
-    if ( token == null ){
-      this.router.navigateByUrl('/login');
-
-    }
-  }
+  
 }

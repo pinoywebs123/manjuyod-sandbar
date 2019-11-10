@@ -8,7 +8,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
-    
+
     public function login(Request $request)
     {
     	$credentials = $request->only('username', 'password');
@@ -24,6 +24,6 @@ class AuthController extends Controller
         }
 
         // all good so return the token
-        return response()->json(compact('token'));
+        return response()->json($token,200);
     }
 }
