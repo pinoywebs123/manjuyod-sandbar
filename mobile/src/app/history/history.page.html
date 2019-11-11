@@ -1,12 +1,43 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
       <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-    <ion-title>history</ion-title>
+    <ion-title>History</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        Date
+      </ion-col>
+      <ion-col>
+        Time
+      </ion-col>
+      <ion-col>
+        Persons
+      </ion-col>
+      <ion-col>
+        Status
+      </ion-col>
+    </ion-row>
 
+    <ion-row *ngFor="let book of bookings">
+      <ion-col>
+        {{book.date}}
+      </ion-col>
+      <ion-col>
+        {{book.time}}
+      </ion-col>
+      <ion-col>
+        {{book.persons}}
+      </ion-col>
+      <ion-col>
+        Status
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
 </ion-content>

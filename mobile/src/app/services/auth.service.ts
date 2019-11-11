@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { ServerConfig } from '../configs/server.config';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -11,6 +12,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private alertController: AlertController
   ) { }
 
   login(username: string, password : string) {
@@ -24,7 +26,7 @@ export class AuthService {
       err => {
         console.log(err.status);
         if (err.status === 401) {
-            alert('Invalid Username/Password');
+            this.presentAlert();
         }
       }
     );
@@ -39,6 +41,23 @@ export class AuthService {
   getToken() {
      const token = JSON.parse(localStorage.getItem('token'));
      return token;
+  }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message: 'Invalid Username/Password Combination!',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  registerCustomer() {
+    
+  }
+
+  checkUserToken() {
+
   }
 }
 
