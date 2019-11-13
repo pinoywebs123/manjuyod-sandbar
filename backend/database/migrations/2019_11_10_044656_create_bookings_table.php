@@ -20,6 +20,7 @@ class CreateBookingsTable extends Migration
             $table->string('time');
             $table->string('persons');
             $table->bigInteger('approved_by')->nullable();
+            $table->integer('status_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

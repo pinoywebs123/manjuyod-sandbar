@@ -26,7 +26,7 @@ export class AuthService {
       err => {
         console.log(err.status);
         if (err.status === 401) {
-            this.presentAlert();
+            this.presentAlert('Invalid Username/Password Combination!');
         }
       }
     );
@@ -42,10 +42,10 @@ export class AuthService {
      const token = JSON.parse(localStorage.getItem('token'));
      return token;
   }
-  async presentAlert() {
+  async presentAlert(display) {
     const alert = await this.alertController.create({
       header: 'Error',
-      message: 'Invalid Username/Password Combination!',
+      message: display,
       buttons: ['OK']
     });
 
@@ -53,7 +53,7 @@ export class AuthService {
   }
 
   registerCustomer() {
-    
+
   }
 
   checkUserToken() {
